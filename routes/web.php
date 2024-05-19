@@ -19,3 +19,4 @@ Route::post('/registration',[SignupController::class,'Store']);
 Route::post('login_user',[LoginController::class,'Index']);
 
 Route::get('dashboard',[dashboardController::class,'details']);
+Route::post('food_details',[dashboardController::class,'foodOrder']);

@@ -206,11 +206,15 @@
         form input[type="reset"] {
             margin-left: 0;
         }
-        }
+        
 
     </style>
     @if(Session::has('success'))
         <h3 style="color:green">{{ Session::get('success') }}</h3>
+    @endif
+
+    @if(Session::has('fail'))
+        <h3 style="color:red">{{ Session::get('fail') }}</h3>
     @endif
     <header class="header">
         <div class="image-slider">
@@ -238,12 +242,12 @@
     </main>
     <hr>
     <hr>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="{{url('food_details')}}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="food_name">Food Name</label>
         <input type="text" id="food_name" name="food_name" required><br>
         <label for="image">Image</label>
-        <input type="file" id="image" name="image"  accept="image/jpg, image/jpeg" required><br>
+        <input type="file" id="image" name="image"  accept="image/jpg, image/jpeg, image/webp, image/avif" required><br>
         <label for="price">Price</label>
         <input type="text" id="price" name="price" required><br>
         <label for="quality">Food Quality</label>
@@ -253,6 +257,28 @@
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">
     </form>
+
+    <table border="1">
+        <tr>
+            <th>Food Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quality</th>
+            <th>Feedback</th>
+        </tr>
+        @foreach($food_data as $data)
+        <tr>
+            <td>{{$data->food_name}}</td>
+            <td><img src="{{url('foods/'.$data->image)}}" alt="" width=120px height=120px></td>
+            <td>{{$data->price}}</td>
+            <td>{{$data->quality}}</td>
+            <td>{{$data->feedback}}</td>
+            <td><a href="#">edit</a></td>
+            <td><a href="#">delete</a></td>
+            <td><a href="#">download manual</a></td>
+        </tr>
+        @endforeach
+    </table>
 
     <footer class="footer">
         <div class="footer-content">
