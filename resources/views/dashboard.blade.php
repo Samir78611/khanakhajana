@@ -232,7 +232,7 @@
                 <option value="option2">Menu Option 2</option>
                 <option value="option3">Menu Option 3</option>
             </select>
-            <button id="logout">Logout</button>
+            <a href="{{url('logout_user')}}" id="logout">Logout</a>
         </div>
     </header>
 
@@ -273,9 +273,10 @@
             <td>{{$data->price}}</td>
             <td>{{$data->quality}}</td>
             <td>{{$data->feedback}}</td>
-            <td><a href="#">edit</a></td>
-            <td><a href="#">delete</a></td>
+            <td><a href="{{url('edit_food/'.$data->id)}}" class="btn btn-success">Edit</a>
+            <td><a href="{{url('delete_food/'.$data->id)}}">delete</a></td>
             <td><a href="#">download manual</a></td>
+            <td><a href="#">Buy Now</a></td>
         </tr>
         @endforeach
     </table>

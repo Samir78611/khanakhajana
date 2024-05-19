@@ -23,7 +23,7 @@
         
         @endif
         @if(Session::has('success'))
-        <h3 style="color:red">{{Session::get('success')}}</h3>
+        <h3 style="color:green">{{Session::get('success')}}</h3>
         @endif
         <style>
             body {

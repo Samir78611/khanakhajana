@@ -41,4 +41,26 @@ class dashboardController extends Controller
             return redirect(url('dashboard'))->with('fail','You have to Successfully add food details');
         }
     }
-}
+    public function editFood($id){
+
+        $edit_food=DB::select("CALL id_detail(?)", array($id));
+
+        return view('edit_food',compact('edit_food')); 
+    }
+    public function deletefood ($id) {
+        $delete_food=DB::delete("CALL delete_food(?)",array($id));
+        if($delete_food) {
+            return redirect(url('dashboard'))->with('success','delete Succesfully');
+        }else{
+            return redirect(url('dashboard'))->with('fail','delete Succesfully');
+        }
+
+    }
+    public function logout() {
+           if(Auth::check()) {
+            Auth::logout();
+            return redirect(url('signup'))->with('success','logout Succesfully');
+           }
+    }
+
+    }

@@ -20,3 +20,7 @@ Route::post('login_user',[LoginController::class,'Index']);
 
 Route::get('dashboard',[dashboardController::class,'details']);
 Route::post('food_details',[dashboardController::class,'foodOrder']);
+Route::get('edit_food/{id}',[dashboardController::class,'editFood']);
+Route::get('delete_food/{id}',[dashboardController::class,'deletefood']);
+Route::get('logout_user',[dashboardController::class,'logout']);
+
